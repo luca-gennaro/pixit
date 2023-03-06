@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Canvas from './components/Canvas'
+import ColorPalette from './components/ColorPalette'
+import Navbar from './components/Navbar'
+import colors from "./data.json"
+import { InputContext } from './Context/Context'
 
 const App = () => {
+
+  const [width, setWidth] = useState(10)
+  const [height, setHeight] = useState(10)
+  const [color, setColor] = useState("#000000")
+
   return (
-    <div>App</div>
+    <InputContext.Provider value={{width, setWidth, height, setHeight, color, setColor}}>
+      <div className='flex flex-col h-[100vh] bg-gradient-to-b from-slate-200 to-white'>
+        <Navbar />
+        <ColorPalette colors={colors}/>
+        <Canvas />
+      </div>
+    </InputContext.Provider>
   )
 }
 
