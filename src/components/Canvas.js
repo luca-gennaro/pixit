@@ -1,10 +1,9 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { InputContext } from "../Context/Context";
 
 const Canvas = () => {
   const [isMouseDown, setIsMouseDown] = useState(false)
-  const { width, height, color } = useContext(InputContext)
-  const canvasRef = useRef(null);
+  const { width, height, color, canvasRef } = useContext(InputContext)
 
 
   useEffect(() => {
@@ -28,7 +27,7 @@ const Canvas = () => {
     ctx.lineWidth = 0.5;
     ctx.strokeStyle = "#CCCCCC";
     ctx.stroke();
-  }, [width, height]);
+  }, [width, height, canvasRef]);
 
   const handleMouseDown = (event) => {
 
